@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { industries, services, site } from '@/lib/content';
 
 const nav = [
@@ -18,22 +19,32 @@ const assetPath = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH || ''}$
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [open]);
+  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 20);
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false); };
+    update(); window.addEventListener('scroll', update, { passive: true }); window.addEventListener('keydown', escape);
+    return () => { window.removeEventListener('scroll', update); window.removeEventListener('keydown', escape); };
+  }, []);
+  const active = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return <>
     <a className="skip-link" href="#main-content">Skip to main content</a>
     <div className="trust-bar"><span>Risk-driven cybersecurity assessments for regulated and operationally sensitive organizations.</span><span className="trust-contact">Columbia, Maryland · <a href={`tel:${site.phoneHref}`}>{site.phone}</a></span></div>
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-inner">
         <Link href="/" className="logo-link" aria-label="PDDG home">
           <img src={assetPath('/logos/pddg-logo.png')} width="195" height="80" alt="Pinnacle Digital Defense Group" />
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {nav.map(item => <div className="nav-item" key={item.href}>
-            <Link href={item.href}>{item.label}</Link>
+            <Link href={item.href} aria-current={active(item.href) ? 'page' : undefined} className={active(item.href) ? 'active' : ''}>{item.label}</Link>
             {item.label === 'Services' && <div className="dropdown mega services-menu">
               <div><span className="menu-kicker">Assess</span>{services.slice(0, 5).map(s => <Link key={s.slug} href={`/services/${s.slug}`}>{s.name}</Link>)}</div>
               <div><span className="menu-kicker">Strengthen & monitor</span>{services.slice(5).map(s => <Link key={s.slug} href={`/services/${s.slug}`}>{s.name}</Link>)}<Link className="menu-all" href="/services">View all services →</Link></div>
@@ -47,7 +58,7 @@ export function Header() {
     </header>
     <div className={`mobile-panel ${open ? 'open' : ''}`} id="mobile-menu" aria-hidden={!open}>
       <nav aria-label="Mobile navigation">
-        {nav.map(item => <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}<span>↗</span></Link>)}
+        {nav.map(item => <Link key={item.href} href={item.href} aria-current={active(item.href) ? 'page' : undefined} className={active(item.href) ? 'active' : ''} onClick={() => setOpen(false)}>{item.label}<span>↗</span></Link>)}
         <div className="mobile-sub"><span>Security services</span>{services.map(s => <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setOpen(false)}>{s.name}</Link>)}</div>
         <Link href="/book-a-security-fit-call" className="button" onClick={() => setOpen(false)}>Book a Security Fit Call</Link>
       </nav>

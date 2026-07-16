@@ -27,7 +27,12 @@ export function MotionController() {
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     items.forEach(item => observer.observe(item));
-    return () => observer.disconnect();
+    const motionItems = Array.from(document.querySelectorAll<HTMLElement>('.hero-visual, .service-intelligence-map, .industry-explorer, .report-preview, .process, .industry-art'));
+    const motionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.target.classList.toggle('motion-active', entry.isIntersecting));
+    }, { rootMargin: '120px 0px', threshold: 0.01 });
+    motionItems.forEach(item => motionObserver.observe(item));
+    return () => { observer.disconnect(); motionObserver.disconnect(); };
   }, []);
   return null;
 }

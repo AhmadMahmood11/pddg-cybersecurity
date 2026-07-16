@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Accordion } from '@/components/Interactive';
-import { Credentials, HeroVisual, IndustryGrid, Process, ReportPreview, SectionIntro, ServiceGrid, Icon } from '@/components/Elements';
+import { Credentials, HeroVisual, Process, SectionIntro, ServiceGrid, Icon } from '@/components/Elements';
+import { IndustryExplorer, ReportPreview, ServiceIntelligenceMap } from '@/components/Experience';
 import { generalFaq, resources } from '@/lib/content';
 
 export default function HomePage() {
@@ -17,13 +18,15 @@ export default function HomePage() {
       <article><span className="icon-box"><Icon name="chart"/></span><span className="card-number">03</span><h3>Demonstrate measurable progress</h3><p>Help executives, auditors, customers, and technical teams understand improvement and remaining risk.</p></article>
     </div></div></section>
 
-    <section className="services-section section"><div className="container"><div className="section-heading-row"><SectionIntro eyebrow="Security services" title="Examine risk across the layers that keep the organization operating." copy="Select a focused assessment or combine services around a defined business objective."/><Link className="text-link" href="/services">View all services <Icon name="arrow"/></Link></div><ServiceGrid limit={6}/></div></section>
+    <section className="service-map-section section muted"><div className="container"><SectionIntro eyebrow="Assess · Strengthen · Monitor" title="Coverage across the layers that shape operational risk." copy="Every engagement is scoped around a defined objective, authorized environment, and intended decision."/><ServiceIntelligenceMap/></div></section>
+
+    <section className="services-section section"><div className="container"><div className="section-heading-row"><SectionIntro eyebrow="Security services" title="Examine risk across the layers that keep the organization operating." copy="Select a focused assessment or combine services around a defined business objective."/><Link className="text-link" href="/services">View all services <Icon name="arrow"/></Link></div><ServiceGrid/></div></section>
 
     <section className="selection-guide dark-section section"><div className="container"><div><span className="eyebrow light">Service selection guide</span><h2>Not sure which assessment you need?</h2><p>Begin with the question you need the work to answer. A fit call can help distinguish broad discovery, controlled validation, ongoing management, governance review, monitoring, or on-site exposure.</p><Link href="/book-a-security-fit-call" className="button">Help Me Choose the Right Assessment <span>↗</span></Link></div><div className="selection-list"><span><b>Penetration testing</b><em>Validate realistic attack paths</em></span><span><b>Vulnerability assessment</b><em>Identify and prioritize broad exposure</em></span><span><b>Vulnerability management</b><em>Track risk reduction over time</em></span><span><b>Policy assessment</b><em>Review governance and procedures</em></span><span><b>Wireless & physical</b><em>Assess on-site and infrastructure pathways</em></span></div></div></section>
 
-    <section className="industries-section section muted"><div className="container"><div className="section-heading-row"><SectionIntro eyebrow="Industries" title="Security context changes with the mission, data, and operating environment." copy="PDDG’s assessment approach accounts for sector-specific pressures without treating a framework as a guarantee."/><Link className="text-link" href="/industries">View industries <Icon name="arrow"/></Link></div><IndustryGrid/></div></section>
-
     <section className="approach-section section"><div className="container"><SectionIntro eyebrow="The PDDG approach" title="A disciplined path from uncertainty to accountable action." copy="Exact stages and methods depend on the selected service, authorization, and engagement scope."/><Process/></div></section>
+
+    <section className="industries-section section muted"><div className="container"><div className="section-heading-row"><SectionIntro eyebrow="Industries" title="Security context changes with the mission, data, and operating environment." copy="PDDG’s assessment approach accounts for sector-specific pressures without treating a framework as a guarantee."/><Link className="text-link" href="/industries">View industries <Icon name="arrow"/></Link></div><IndustryExplorer/></div></section>
 
     <section className="report-section dark-section section"><div className="container report-layout"><div><span className="eyebrow light">Clear reporting</span><h2>Give every audience the level of detail it needs.</h2><p>Assessment output may combine an executive view, risk-prioritized findings, technical evidence, impact context, responsible owners, suggested timelines, and validation status—depending on scope.</p><ul className="check-list"><li>Executive summary</li><li>Technical evidence</li><li>Business-impact explanation</li><li>Remediation recommendations</li></ul><Link href="/request-a-sample-report" className="button">Request a Sample Report <span>↗</span></Link></div><ReportPreview/></div></section>
 

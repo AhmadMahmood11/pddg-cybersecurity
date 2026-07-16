@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { industries, services } from '@/lib/content';
+import { CyberSystemVisual } from './CyberVisual';
 
 const assetPath = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH || ''}${path}`;
 
@@ -38,30 +39,7 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
 }
 
 export function HeroVisual({ variant = 'matrix', label = 'Risk intelligence' }: { variant?: string; label?: string }) {
-  const infrastructureVisuals = ['facility', 'health', 'manufacturing', 'government', 'wireless', 'people'];
-  const cloudVisuals = ['app', 'policy', 'checklist', 'report', 'finance', 'retail'];
-  const visualFile = infrastructureVisuals.includes(variant)
-    ? 'secure-infrastructure.svg'
-    : cloudVisuals.includes(variant)
-      ? 'cloud-defense.svg'
-      : 'cyber-operations.svg';
-  return <div className={`hero-visual visual-${variant}`} role="img" aria-label={`Abstract ${label.toLowerCase()} visualization`}>
-    <img className="visual-image" src={assetPath(`/images/${visualFile}`)} alt="" aria-hidden="true"/>
-    <div className="visual-overlay">
-      <div className="visual-top"><span>PDDG / {label.toUpperCase()}</span><span className="live-dot">ACTIVE DEFENSE</span></div>
-      <div className="tech-bot" aria-hidden="true">
-        <span className="bot-signal s1"/><span className="bot-signal s2"/><span className="bot-signal s3"/>
-        <span className="bot-antenna"><i/></span>
-        <span className="bot-head"><i/><i/><b/></span>
-        <span className="bot-neck"/>
-        <span className="bot-body"><i/><b>PDDG</b></span>
-        <span className="bot-arm arm-left"/><span className="bot-arm arm-right"/>
-      </div>
-      <div className="tech-orbit" aria-hidden="true"><span><Icon name="shield"/></span><span><Icon name="scan"/></span><span><Icon name="signal"/></span></div>
-      <div className="visual-status"><span><small>POSTURE</small><b>Risk mapped</b></span><span><small>PRIORITY</small><b>Action ready</b></span></div>
-      <div className="visual-bottom"><span><i/> DIGITAL</span><span><i/> HUMAN</span><span><i/> PHYSICAL</span></div>
-    </div>
-  </div>;
+  return <div className={`hero-visual visual-${variant}`}><CyberSystemVisual label={label} variant={variant}/></div>;
 }
 
 export function PageHero({ eyebrow, title, copy, primary = 'Book a Security Fit Call', primaryHref = '/book-a-security-fit-call', secondary, secondaryHref, visual = 'matrix', children }: { eyebrow: string; title: string; copy: string; primary?: string; primaryHref?: string; secondary?: string; secondaryHref?: string; visual?: string; children?: React.ReactNode }) {
@@ -104,7 +82,3 @@ export function Credentials() {
 
 export function ServiceGrid({ limit }: { limit?: number }) { const list = limit ? services.slice(0, limit) : services; return <div className="service-grid">{list.map((s, i) => <ServiceCard key={s.slug} slug={s.slug} name={s.name} summary={s.summary} index={i}/>)}</div>; }
 export function IndustryGrid() { return <div className="industry-grid">{industries.map((item, i) => <IndustryCard key={item.slug} slug={item.slug} name={item.name} summary={item.summary} index={i}/>)}</div>; }
-
-export function ReportPreview() {
-  return <div className="report-preview"><div className="report-bar"><span><b>PDDG</b> / SECURITY ASSESSMENT</span><span>Illustrative report preview</span></div><div className="report-body"><aside><span className="active">Executive summary</span><span>Prioritized findings</span><span>Technical evidence</span><span>Remediation plan</span><span>Retesting status</span></aside><main><div className="report-head"><div><small>RISK OVERVIEW</small><h3>Findings by priority</h3></div><span>SYNTHETIC DATA</span></div><div className="report-chart"><div className="donut"><span>12<small>illustrative<br/>findings</small></span></div><div className="legend"><span><i className="critical"/>Critical <b>2</b></span><span><i className="high"/>High <b>3</b></span><span><i className="medium"/>Medium <b>4</b></span><span><i className="low"/>Low <b>3</b></span></div></div><div className="report-findings"><div><span className="severity high">HIGH</span><b>Illustrative finding title</b><em>Owner: Application</em></div><div><span className="severity medium">MEDIUM</span><b>Illustrative control gap</b><em>Target: 30 days</em></div></div></main></div></div>;
-}

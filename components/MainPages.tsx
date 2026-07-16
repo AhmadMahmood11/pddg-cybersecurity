@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Accordion, DemoForm } from './Interactive';
-import { Breadcrumbs, Credentials, IndustryGrid, PageHero, Process, ReportPreview, SectionIntro, ServiceGrid, Icon } from './Elements';
+import { Breadcrumbs, Credentials, IndustryGrid, PageHero, Process, SectionIntro, ServiceGrid, Icon } from './Elements';
+import { ReportPreview } from './Experience';
 import { generalFaq, industries, readinessItems, resources, services, site } from '@/lib/content';
 
 export function ServicesPage() {

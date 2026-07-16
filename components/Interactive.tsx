@@ -5,12 +5,15 @@ import type { FAQ } from '@/lib/content';
 
 export function Accordion({ items }: { items: FAQ[] }) {
   const [active, setActive] = useState<number | null>(0);
+  const baseId = useId();
   return <div className="accordion">
     {items.map((item, index) => {
       const isOpen = active === index;
+      const buttonId = `${baseId}-button-${index}`;
+      const panelId = `${baseId}-panel-${index}`;
       return <div className="accordion-item" key={item.q}>
-        <h3><button aria-expanded={isOpen} onClick={() => setActive(isOpen ? null : index)}><span>{item.q}</span><span aria-hidden="true">{isOpen ? '−' : '+'}</span></button></h3>
-        <div className="accordion-panel" hidden={!isOpen}><p>{item.a}</p></div>
+        <h3><button id={buttonId} aria-expanded={isOpen} aria-controls={panelId} onClick={() => setActive(isOpen ? null : index)}><span>{item.q}</span><span aria-hidden="true">{isOpen ? '−' : '+'}</span></button></h3>
+        <div className={`accordion-panel ${isOpen ? 'open' : ''}`} id={panelId} role="region" aria-labelledby={buttonId} aria-hidden={!isOpen}><div><p>{item.a}</p></div></div>
       </div>;
     })}
   </div>;
