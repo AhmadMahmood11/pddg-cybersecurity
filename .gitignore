@@ -1,0 +1,11 @@
+node_modules
+.npm-cache
+.sites-runtime
+.wrangler
+.next
+dist
+.open-next
+out
+upload
+*.log
+.DS_Store
