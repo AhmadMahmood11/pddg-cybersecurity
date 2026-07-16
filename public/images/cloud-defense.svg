@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Cloud and application security illustration</title>
+  <desc id="desc">Secure cloud services, application interfaces, and protected data connections.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#071827"/><stop offset="1" stop-color="#123b52"/></linearGradient><linearGradient id="c" x2="1" y2="1"><stop stop-color="#76f2ff"/><stop offset="1" stop-color="#18a999"/></linearGradient><pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#7eeeff" stroke-opacity=".07"/></pattern><filter id="s"><feDropShadow dx="0" dy="24" stdDeviation="28" flood-opacity=".35"/></filter></defs>
+  <rect width="1400" height="1000" rx="52" fill="url(#bg)"/><rect width="1400" height="1000" rx="52" fill="url(#g)"/>
+  <g filter="url(#s)"><rect x="132" y="128" width="1136" height="744" rx="40" fill="#0a2232" stroke="#7cefff" stroke-opacity=".2"/></g>
+  <g transform="translate(210 205)" font-family="Arial,sans-serif"><text fill="#6f95a6" font-size="20" letter-spacing="4">SECURE APPLICATION ENVIRONMENT</text>
+    <g transform="translate(60 115)">
+      <path d="M260 310h420c72 0 128-49 128-111 0-57-48-104-111-110C674 28 613-7 544-7c-83 0-153 51-171 121-12-4-25-6-38-6-66 0-119 48-119 108 0 52 39 94 92 105" fill="#10394b" stroke="#72efff" stroke-opacity=".55" stroke-width="3"/>
+      <g transform="translate(505 170)"><path d="M0-81 72-51v56c0 63-30 112-72 138-42-26-72-75-72-138v-56z" fill="url(#c)" fill-opacity=".19" stroke="#7cf2ff" stroke-width="4"/><rect x="-29" y="-6" width="58" height="53" rx="10" fill="#80f4ff" fill-opacity=".13" stroke="#8bf5ff" stroke-width="4"/><path d="M-18-6v-18a18 18 0 0 1 36 0v18" fill="none" stroke="#8bf5ff" stroke-width="5"/></g>
+      <g fill="#0e2e40" stroke="#6cecff" stroke-opacity=".42" stroke-width="2"><rect x="0" y="385" width="228" height="124" rx="20"/><rect x="280" y="385" width="228" height="124" rx="20"/><rect x="560" y="385" width="228" height="124" rx="20"/></g>
+      <g fill="#88f5ff"><circle cx="42" cy="426" r="12"/><circle cx="322" cy="426" r="12"/><circle cx="602" cy="426" r="12"/></g>
+      <g fill="#d8f8fb" font-size="18" font-weight="700"><text x="68" y="433">IDENTITY</text><text x="348" y="433">APPLICATION</text><text x="628" y="433">DATA</text></g>
+      <g fill="#71909f" font-size="14"><text x="42" y="474">Verified access</text><text x="322" y="474">Secure logic</text><text x="602" y="474">Protected flow</text></g>
+      <g stroke="#6cecff" stroke-opacity=".28" stroke-width="3" stroke-dasharray="7 10"><path d="M114 385V323"/><path d="M394 385V323"/><path d="M674 385V323"/></g>
+    </g>
+  </g>
+</svg>

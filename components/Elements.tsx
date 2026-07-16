@@ -23,13 +23,20 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
 }
 
 export function HeroVisual({ variant = 'matrix', label = 'Risk intelligence' }: { variant?: string; label?: string }) {
+  const infrastructureVisuals = ['facility', 'health', 'manufacturing', 'government', 'wireless', 'people'];
+  const cloudVisuals = ['app', 'policy', 'checklist', 'report', 'finance', 'retail'];
+  const visualFile = infrastructureVisuals.includes(variant)
+    ? 'secure-infrastructure.svg'
+    : cloudVisuals.includes(variant)
+      ? 'cloud-defense.svg'
+      : 'cyber-operations.svg';
   return <div className={`hero-visual visual-${variant}`} role="img" aria-label={`Abstract ${label.toLowerCase()} visualization`}>
-    <div className="visual-top"><span>RISK SIGNAL / {label.toUpperCase()}</span><span className="live-dot">ANALYZING</span></div>
-    <div className="visual-grid">
-      <div className="visual-core"><span className="core-ring r1"/><span className="core-ring r2"/><span className="core-ring r3"/><span className="core-node">PDDG<small>risk view</small></span><i className="node n1"/><i className="node n2"/><i className="node n3"/><i className="node n4"/></div>
-      <div className="risk-stack"><span><b>01</b> Exposure <em>review</em></span><span><b>02</b> Impact <em>map</em></span><span><b>03</b> Priority <em>act</em></span></div>
+    <img className="visual-image" src={assetPath(`/images/${visualFile}`)} alt="" aria-hidden="true"/>
+    <div className="visual-overlay">
+      <div className="visual-top"><span>PDDG / {label.toUpperCase()}</span><span className="live-dot">ACTIVE DEFENSE</span></div>
+      <div className="visual-status"><span><small>POSTURE</small><b>Risk mapped</b></span><span><small>PRIORITY</small><b>Action ready</b></span></div>
+      <div className="visual-bottom"><span><i/> DIGITAL</span><span><i/> HUMAN</span><span><i/> PHYSICAL</span></div>
     </div>
-    <div className="visual-bottom"><span><i/> DIGITAL</span><span><i/> HUMAN</span><span><i/> PHYSICAL</span></div>
   </div>;
 }
 
@@ -47,7 +54,8 @@ export function ServiceCard({ slug, name, summary, index }: { slug: string; name
 }
 
 export function IndustryCard({ slug, name, summary, index }: { slug: string; name: string; summary: string; index: number }) {
-  return <Link href={`/industries/${slug}`} className={`industry-card industry-${index + 1}`}><div className="industry-art" aria-hidden="true"><span/><i/><b>{String(index + 1).padStart(2, '0')}</b></div><div><span className="card-kicker">Industry</span><h3>{name}</h3><p>{summary}</p><span className="card-link">View industry <Icon name="arrow"/></span></div></Link>;
+  const art = index % 3 === 0 ? 'secure-infrastructure.svg' : index % 3 === 1 ? 'cloud-defense.svg' : 'cyber-operations.svg';
+  return <Link href={`/industries/${slug}`} className={`industry-card industry-${index + 1}`}><div className="industry-art" aria-hidden="true"><img src={assetPath(`/images/${art}`)} alt=""/><span/><b>{String(index + 1).padStart(2, '0')}</b></div><div><span className="card-kicker">Industry</span><h3>{name}</h3><p>{summary}</p><span className="card-link">View industry <Icon name="arrow"/></span></div></Link>;
 }
 
 export function Process({ compact = false }: { compact?: boolean }) {
