@@ -34,6 +34,15 @@ export function HeroVisual({ variant = 'matrix', label = 'Risk intelligence' }: 
     <img className="visual-image" src={assetPath(`/images/${visualFile}`)} alt="" aria-hidden="true"/>
     <div className="visual-overlay">
       <div className="visual-top"><span>PDDG / {label.toUpperCase()}</span><span className="live-dot">ACTIVE DEFENSE</span></div>
+      <div className="tech-bot" aria-hidden="true">
+        <span className="bot-signal s1"/><span className="bot-signal s2"/><span className="bot-signal s3"/>
+        <span className="bot-antenna"><i/></span>
+        <span className="bot-head"><i/><i/><b/></span>
+        <span className="bot-neck"/>
+        <span className="bot-body"><i/><b>PDDG</b></span>
+        <span className="bot-arm arm-left"/><span className="bot-arm arm-right"/>
+      </div>
+      <div className="tech-orbit" aria-hidden="true"><span><Icon name="shield"/></span><span><Icon name="scan"/></span><span><Icon name="signal"/></span></div>
       <div className="visual-status"><span><small>POSTURE</small><b>Risk mapped</b></span><span><small>PRIORITY</small><b>Action ready</b></span></div>
       <div className="visual-bottom"><span><i/> DIGITAL</span><span><i/> HUMAN</span><span><i/> PHYSICAL</span></div>
     </div>
