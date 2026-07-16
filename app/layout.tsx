@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Header, Footer } from '@/components/Chrome';
+import { MotionController } from '@/components/Motion';
 import { site } from '@/lib/content';
 import './globals.css';
 
@@ -23,5 +24,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     areaServed: ['Maryland', 'United States'],
     serviceType: 'Cybersecurity assessment and consulting'
   };
-  return <html lang="en"><body><Header/><main id="main-content">{children}</main><Footer/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structured) }}/></body></html>;
+  return <html lang="en"><body><Header/><MotionController/><main id="main-content">{children}</main><Footer/><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structured) }}/></body></html>;
 }
