@@ -1,50 +1,30 @@
-# PDDG Cybersecurity Website
+# PDDG Premium Cybersecurity Website Redesign
 
-Complete static-export-ready website for Pinnacle Digital Defense Group. The repository includes every public page, responsive styling, accessible interactive components, local SVG assets, metadata, sitemap, robots file, custom 404 page, and an automated GitHub Pages workflow.
+A complete static redesign of the Pinnacle Digital Defense Group website for GitHub Pages. The project preserves the existing service names, industry pages, core business content, legal pages, resources, contact details, and public URL structure while replacing the design and front-end experience.
 
-## Publish with GitHub Pages
+## Deploy to GitHub Pages
 
-1. Create a public GitHub repository or open the existing PDDG repository.
-2. Place all files from this project in the repository root. Do not upload the ZIP as a single file.
-3. Open **Settings → Pages** in GitHub.
-4. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-5. Commit and push the files to the `main` branch.
-6. Open the **Actions** tab and wait for the deployment workflow to complete.
+1. Extract the ZIP.
+2. Replace the contents of your existing `pddg-cybersecurity` repository with the extracted files.
+3. Commit and push everything to the `main` branch.
+4. In GitHub, open **Settings → Pages**.
+5. Under **Build and deployment**, choose **GitHub Actions**.
+6. Open the **Actions** tab and confirm that “Deploy static site to GitHub Pages” completes successfully.
 
-The included workflow automatically detects whether the site is hosted at a repository subdirectory such as `username.github.io/repository-name/` or at a root Pages domain.
+The site is built with plain HTML, CSS, and JavaScript, so there is no npm installation or build command.
 
-### Update an existing clone
+## Forms
 
-```bash
-cd /path/to/pddg-cybersecurity
-git pull --rebase origin main
-git add .
-git commit -m "Update PDDG website"
-git push origin main
-```
+The site is static. Contact, booking, and sample-report forms prepare an email in the visitor's email application and do not store form data on the website. For production lead capture, connect the forms to your CRM or form endpoint.
 
-See [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md) for troubleshooting and alternative upload instructions.
+## Main files
 
-## Local development
+- `index.html` — homepage
+- `services/`, `industries/`, `resources/` — all preserved routes
+- `assets/css/styles.css` — complete responsive design system
+- `assets/js/main.js` — animations, navigation, accordions, service tabs, checklist, and form behavior
+- `.github/workflows/deploy.yml` — automatic GitHub Pages deployment
 
-Node.js 22 or newer is recommended.
+## Editing content
 
-```bash
-npm install
-npm run dev
-```
-
-Open `http://localhost:3000`.
-
-## Test the GitHub Pages export
-
-Replace the values below with the intended GitHub username and repository name:
-
-```bash
-GITHUB_PAGES=true \
-NEXT_PUBLIC_BASE_PATH=/repository-name \
-NEXT_PUBLIC_SITE_URL=https://username.github.io/repository-name \
-npm run build:github
-```
-
-The static website is written to `out/`. The deployment workflow uploads that directory and includes `.nojekyll` automatically.
+The generated HTML files are deployment-ready. `generate_site.py` is also included as the structured source used to generate the pages. Edit its content dictionaries and run `python generate_site.py` to regenerate the site consistently.

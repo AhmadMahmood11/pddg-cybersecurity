@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ahmadmahmood11.github.io/pddg-cybersecurity/sitemap.xml
